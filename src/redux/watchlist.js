@@ -2,14 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const watchlistSlice = createSlice({
   name: "watchlist",
-  initialState: {},
+  initialState: {
+    items: [],
+  },
   reducers: {
-    setModules: (state, action) => {
-      state.modules = action.payload;
+    addToWatchlist: (state, action) => {
+      console.warn(state);
+      state.items = [...state.items, action.payload];
+    },
+    removeFromWatchlist: (state, action) => {
+      state.items = state.items.filter(
+        (item) => item["1. symbol"] !== action.payload
+      );
     },
   },
 });
 
-export const { setModules } = watchlistSlice.actions;
+export const { addToWatchlist, removeFromWatchlist } = watchlistSlice.actions;
 
 export default watchlistSlice.reducer;

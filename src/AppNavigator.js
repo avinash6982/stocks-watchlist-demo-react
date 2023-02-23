@@ -20,7 +20,7 @@ const AppNavigator = () => {
   return (
     <Routes>
       {appRoutes.map((item, key) => (
-        <Route exact path={item.path} element={item.component} />
+        <Route key={key} exact path={item.path} element={item.component} />
       ))}
       <Route path="/*" element={<PageNotFound />} />
     </Routes>
